@@ -22,9 +22,6 @@ let tago3 = create vertex Tagesordnung set Titel = 'Sonstiges', Kurzbeschreibung
 let tago4 = create vertex Tagesordnung set Titel = 'Ersti Hüttensitzung', Kurzbeschreibung = 'Ankündigung', Protokolltext = '';
 
 /* Edges */
-let top1 = create edge top from $gremium1 to $sitzung1;
-let top2 = create edge top from $gremium2 to $sitzung2;
-
 let mitglied1 = create edge mitglieder from $person1 to $gremium1 set Funktion = 'Vorsitzender';
 let mitglied2 = create edge mitglieder from $person2 to $gremium2 set Funktion = 'Lehrling';
 let mitglied3 = create edge mitglieder from $person3 to $gremium2 set Funktion = 'Leiter';
@@ -48,5 +45,5 @@ let nimmt_teil2 = create edge nimmt_teil from $person2 to $sitzung1;
 let nimmt_teil3 = create edge nimmt_teil from $person3 to $sitzung2;
 let nimmt_teil4 = create edge nimmt_teil from $person4 to $sitzung2;
 
-let erstellt_von1 = create edge erstellt_von from $person2 to $dokument1;
-let erstellt_von2 = create edge erstellt_von from $person2 to $dokument2;
+let erstellt_von1 = create edge erstellt_von from $dokument1 to $person2;
+let erstellt_von2 = create edge erstellt_von from $dokument2 to $person2;
