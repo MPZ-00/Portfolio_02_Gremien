@@ -7,21 +7,21 @@ set ignoreErrors true;
 script sql;
 begin;
 
-let gremium1 = create vertex Gremium set Name = 'Hochschulrat', offiziell = true, inoffiziell = false, Aufgabengebiete = 'HS Angelegenheiten', Start = '01-01-2000', Ende = '31-12-2050';
-let gremium2 = create vertex Gremium set Name = 'Fachschaft E', offiziell = true, inoffiziell = false, Aufgabengebiete = 'Hängt ganz davon ab..', Start = '01-02-2000', Ende = '31-12-2050';
-let gremium3 = create vertex Gremium set Name = 'Studierendenrat', offiziell = true, inoffiziell = false, Aufgabengebiete = ['Haushaltsplan', 'Mittel für Hochschulsport', 'Unterstützung für besondere Projekte'], Start = '01-03-2000', Ende = '31-12-2050'
+let gremium1 = create vertex Gremium set Name = 'Hochschulrat', offiziell = true, inoffiziell = false, Aufgabengebiete = 'HS Angelegenheiten', Start = '2000-01-01', Ende = '2050-12-31';
+let gremium2 = create vertex Gremium set Name = 'Fachschaft E', offiziell = true, inoffiziell = false, Aufgabengebiete = 'Hängt ganz davon ab..', Start = '2000-02-01', Ende = '2050-12-31';
+let gremium3 = create vertex Gremium set Name = 'Studierendenrat', offiziell = true, inoffiziell = false, Aufgabengebiete = ['Haushaltsplan', 'Mittel für Hochschulsport', 'Unterstützung für besondere Projekte'], Start = '2000-03-01', Ende = '2050-12-31'
 
-let sitzung1 = create vertex Sitzung set Beginn = '06-12-2022 14:00', Ende = '06-12-2022 16:00', Einladung_am = '01-11-2022', oeffentlich = false, Ort = 'Gebäude H (Hauptgebäude)', Protokoll = '';
-let sitzung2 = create vertex Sitzung set Beginn = '23-11-2022 19:30', Ende = '23-11-2022 20:00', Einladung_am = '01-11-2022', oeffentlich = true; Ort = 'Gebäude B', Protokoll = '';
+let sitzung1 = create vertex Sitzung set Beginn = '2022-12-06 14:00', Ende = '2022-12-06 16:00', Einladung_am = '2022-11-01', oeffentlich = false, Ort = 'Gebäude H (Hauptgebäude)', Protokoll = '';
+let sitzung2 = create vertex Sitzung set Beginn = '2022-11-23 19:30', Ende = '2022-11-23 20:00', Einladung_am = '2022-11-01', oeffentlich = true; Ort = 'Gebäude B', Protokoll = '';
 
-let person1 = create vertex Student set Name = {'Vorname': 'Hanna', 'Nachname': 'Moos'}, Adresse = {'Strasse': 'Obere Str.', 'Hausnummer': 57, 'PLZ': 12209, 'Ort': 'Berlin'}, Studiengang = 'AI', Studienbeginn = '01-09-2020', MatrikelNr = 22111;
-let person2 = create vertex Student set Name = {'Vorname': 'Hanna', 'Nachname': 'Moos'}, Adresse = {'Strasse': 'Forsterstr.', 'Hausnummer': 57, 'PLZ': 67000, 'Ort': 'Mannheim'}, Studiengang = 'AI', Studienbeginn = '01-09-2020', MatrikelNr = 22112;
+let person1 = create vertex Student set Name = {'Vorname': 'Hanna', 'Nachname': 'Moos'}, Adresse = {'Strasse': 'Obere Str.', 'Hausnummer': 57, 'PLZ': 12209, 'Ort': 'Berlin'}, Studiengang = 'AI', Studienbeginn = '2020-09-01', MatrikelNr = 22111;
+let person2 = create vertex Student set Name = {'Vorname': 'Hanna', 'Nachname': 'Moos'}, Adresse = {'Strasse': 'Forsterstr.', 'Hausnummer': 57, 'PLZ': 67000, 'Ort': 'Mannheim'}, Studiengang = 'AI', Studienbeginn = '2020-09-01', MatrikelNr = 22112;
 let person3 = create vertex Professor set Name = {'Vorname': 'Frédérique', 'Nachname': 'Citeaux'}, Adresse = {'Strasse': 'place Kléber', 'Hausnummer': 24, 'PLZ': 13008, 'Ort': 'Marseille'}, Titel = 'Prof.';
 let person4 = create vertex Mitarbeiter set Name = {'Vorname': 'Elizabeth', 'Nachname': 'Lincoln'}, Adresse = {'Strasse': 'rue des Bouchers', 'Hausnummer': 23, 'PLZ': 13008, 'Ort': 'Marseille'};
 commit;
 
-let dokument1 = create vertex Dokument set Author = 'Moos', Mime_Typ = 'Excel-Tabelle', Inhalt = 'Deputatsstunden der Professoren', Erstelldatum = '05-03-2015';
-let dokument2 = create vertex Dokument set Author = 'Unbekannt', Mime_Typ = 'Text', Inhalt = 'Eiusmod fugiat ipsum adipisicing officia dolore laboris id labore mollit irure sint et.', Erstelldatum = '14-11-2022';
+let dokument1 = create vertex Dokument set Author = 'Moos', Mime_Typ = 'Excel-Tabelle', Inhalt = 'Deputatsstunden der Professoren', Erstelldatum = '2015-03-05';
+let dokument2 = create vertex Dokument set Author = 'Unbekannt', Mime_Typ = 'Text', Inhalt = 'Eiusmod fugiat ipsum adipisicing officia dolore laboris id labore mollit irure sint et.', Erstelldatum = '2022-11-14';
 commit;
 
 let tago1 = create vertex Tagesordnung set Titel = 'Wahl des neuen AStA', Kurzbeschreibung = 'Wahlen der Verfasste Studierendenschaft', Protokolltext = '';
