@@ -5,8 +5,8 @@ let gremium1 = create vertex Gremien set Name = 'Hochschulrat', offiziell = true
 let gremium2 = create vertex Gremien set Name = 'Fachschaft E', offiziell = true, inoffiziell = false, Aufgabengebiete = 'Hängt ganz davon ab..', Start = '2000-02-01', Ende = '2050-12-31';
 let gremium3 = create vertex Gremien set Name = 'Studierendenrat', offiziell = true, inoffiziell = false, Aufgabengebiete = ['Haushaltsplan', 'Mittel für Hochschulsport', 'Unterstützung für besondere Projekte'], Start = '2000-03-01', Ende = '2050-12-31';
 
-let sitzung1 = create vertex Sitzungen set Beginn = '2022-12-06 14:00', Ende = '2022-12-06 16:00', Einladung_am = '2022-11-01', oeffentlich = false, Ort = 'Gebäude H (Hauptgebäude)', Protokoll = '';
-let sitzung2 = create vertex Sitzungen set Beginn = '2022-11-23 19:30', Ende = '2022-11-23 20:00', Einladung_am = '2022-11-01', oeffentlich = true, Ort = 'Gebäude B', Protokoll = '';
+let sitzung1 = create vertex Sitzungen set Beginn = '2022-12-06 14:00:00', Ende = '2022-12-06 16:00:00', Einladung_am = '2022-11-01', oeffentlich = false, Ort = 'Gebäude H (Hauptgebäude)', Protokoll = '';
+let sitzung2 = create vertex Sitzungen set Beginn = '2022-11-23 19:30:00', Ende = '2022-11-23 20:00:00', Einladung_am = '2022-11-01', oeffentlich = true, Ort = 'Gebäude B', Protokoll = '';
 
 let person1 = create vertex Student set Name = {'Vorname': 'Hanna', 'Nachname': 'Moos'}, Adresse = {'Strasse': 'Obere Str.', 'Hausnummer': 57, 'PLZ': 12209, 'Ort': 'Berlin'}, Studiengang = 'AI', Studienbeginn = '2020-09-01', MatrikelNr = 22111;
 let person2 = create vertex Student set Name = {'Vorname': 'Hanna', 'Nachname': 'Moos'}, Adresse = {'Strasse': 'Forsterstr.', 'Hausnummer': 57, 'PLZ': 67000, 'Ort': 'Mannheim'}, Studiengang = 'AI', Studienbeginn = '2020-09-01', MatrikelNr = 22112;

@@ -1,9 +1,9 @@
--- connect remote:fbe-neptun2.rwu.de/DABS_42 DABS_42 DABS_42
--- connect remote:localhost:10111/DABS_42 DABS_42 DABS_42
--- load script /Downloads/Portfolio_01.sql
+/* connect remote:fbe-neptun2.rwu.de/DABS_42 DABS_42 DABS_42 */
+/* connect remote:localhost:10111/DABS_42 DABS_42 DABS_42 */
+/* load script /Downloads/Portfolio_01.sql */
 
-set echo true;
-set ignoreErrors true;
+/* set echo true; */
+/* set ignoreErrors true; */
 
 delete edge E;
 delete vertex V;
@@ -53,7 +53,7 @@ create property Gremien.Aufgabengebiete embeddedlist string;
 create property Gremien.offiziell BOOLEAN;
 create property Gremien.inoffiziell BOOLEAN;
 create property Gremien.Start date;
-create property Germien.Ende date;
+create property Gremien.Ende date;
 
 create property Sitzungen.Beginn datetime;
 create property Sitzungen.Ende datetime;
@@ -68,8 +68,8 @@ create property Tagesordnung.Kurzbeschreibung string;
 create property Tagesordnung.Protokoltext string;
 
 create property Adresse.Strasse string;
-create property Adresse.Hausnummer number;
-create property Adresse.PLZ number;
+create property Adresse.Hausnummer integer;
+create property Adresse.PLZ integer;
 create property Adresse.Ort string;
 
 create property Namen.Vorname string;
@@ -83,7 +83,7 @@ create property Personen.Adresse embedded Adresse;
 
 create property Student.Studiengang string;
 create property Student.Studienbeginn date;
-create property Student.MatrikelNr number;
+create property Student.MatrikelNr integer;
 
 create property Dokument.Author string;
 create property Dokument.Mime_Typ embeddedlist string;
