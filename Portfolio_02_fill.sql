@@ -7,32 +7,64 @@ set ignoreErrors true;
 script sql;
 begin;
 
-let g1 = create vertex Gremium set Name = 'Hochschulrat', offiziell = true, inoffiziell = false, Aufgabengebiete = 'HS Angelegenheiten', Start = '2000-01-01', Ende = '2050-31-12';
-let g2 = create vertex Gremium set Name = 'Fachschaft E', offiziell = true, inoffiziell = false, Aufgabengebiete = 'Hängt ganz davon ab..', Start = '2004-01-01', Ende = '2050-31-12';
+let gremium1 = create vertex Gremium set Name = 'Hochschulrat', offiziell = true, inoffiziell = false, Aufgabengebiete = 'HS Angelegenheiten', Start = '01-01-2000', Ende = '31-12-2050';
+let gremium2 = create vertex Gremium set Name = 'Fachschaft E', offiziell = true, inoffiziell = false, Aufgabengebiete = 'Hängt ganz davon ab..', Start = '01-02-2000', Ende = '31-12-2050';
+let gremium3 = create vertex Gremium set Name = 'Studierendenrat', offiziell = true, inoffiziell = false, Aufgabengebiete = ['Haushaltsplan', 'Mittel für Hochschulsport', 'Unterstützung für besondere Projekte'], Start = '01-03-2000', Ende = '31-12-2050'
 
-let s1 = create vertex Sitzung set Beginn = '06-12-2022 14:00', Ende = '06-12-2022 16:00', Einladung_am = '01-11-2022', oeffentlich = false, Ort = 'Gebäude H (Hauptgebäude)', Protokoll = '';
-let s2 = create vertex Sitzung set Beginn = '23-11-2022 19:30', Ende = '23-11-2022 20:00', Einladung_am = '01-11-2022', oeffentlich = true; Ort = 'Gebäude B', Protokoll = '';
+let sitzung1 = create vertex Sitzung set Beginn = '06-12-2022 14:00', Ende = '06-12-2022 16:00', Einladung_am = '01-11-2022', oeffentlich = false, Ort = 'Gebäude H (Hauptgebäude)', Protokoll = '';
+let sitzung2 = create vertex Sitzung set Beginn = '23-11-2022 19:30', Ende = '23-11-2022 20:00', Einladung_am = '01-11-2022', oeffentlich = true; Ort = 'Gebäude B', Protokoll = '';
 
-let p1 = create vertex Student set Name = {'Vorname': 'Hanna', 'Nachname': 'Moos'}, Adresse = {'Strasse': 'Obere Str.', 'Hausnummer': 57, 'PLZ': 12209, 'Ort': 'Berlin'}, Studiengang = 'AI', Studienbeginn = '01-09-2020', MatrikelNr = 22111;
-let p2 = create vertex Student set Name = {'Vorname': 'Hanna', 'Nachname': 'Moos'}, Adresse = {'Strasse': 'Forsterstr.', 'Hausnummer': 57, 'PLZ': 67000, 'Ort': 'Mannheim'}, Studiengang = 'AI', Studienbeginn = '01-09-2020', MatrikelNr = 22112;
-let p3 = create vertex Professor set Name = {'Vorname': 'Frédérique', 'Nachname': 'Citeaux'}, Adresse = {'Strasse': 'place Kléber', 'Hausnummer': 24, 'PLZ': 13008, 'Ort': 'Marseille'}, Titel = 'Prof.';
-let p4 = create vertex Mitarbeiter set Name = {'Vorname': 'Elizabeth', 'Nachname': 'Lincoln'}, Adresse = {'Strasse': 'rue des Bouchers', 'Hausnummer': 23, 'PLZ': 13008, 'Ort': 'Marseille'};
+let person1 = create vertex Student set Name = {'Vorname': 'Hanna', 'Nachname': 'Moos'}, Adresse = {'Strasse': 'Obere Str.', 'Hausnummer': 57, 'PLZ': 12209, 'Ort': 'Berlin'}, Studiengang = 'AI', Studienbeginn = '01-09-2020', MatrikelNr = 22111;
+let person2 = create vertex Student set Name = {'Vorname': 'Hanna', 'Nachname': 'Moos'}, Adresse = {'Strasse': 'Forsterstr.', 'Hausnummer': 57, 'PLZ': 67000, 'Ort': 'Mannheim'}, Studiengang = 'AI', Studienbeginn = '01-09-2020', MatrikelNr = 22112;
+let person3 = create vertex Professor set Name = {'Vorname': 'Frédérique', 'Nachname': 'Citeaux'}, Adresse = {'Strasse': 'place Kléber', 'Hausnummer': 24, 'PLZ': 13008, 'Ort': 'Marseille'}, Titel = 'Prof.';
+let person4 = create vertex Mitarbeiter set Name = {'Vorname': 'Elizabeth', 'Nachname': 'Lincoln'}, Adresse = {'Strasse': 'rue des Bouchers', 'Hausnummer': 23, 'PLZ': 13008, 'Ort': 'Marseille'};
 commit;
 
-let d1 = create vertex Dokument set Author = 'Moos', Mime_Typ = 'Excel-Tabelle', Inhalt = 'Deputatsstunden der Professoren', Erstelldatum = '05-03-2015';
+let dokument1 = create vertex Dokument set Author = 'Moos', Mime_Typ = 'Excel-Tabelle', Inhalt = 'Deputatsstunden der Professoren', Erstelldatum = '05-03-2015';
+let dokument2 = create vertex Dokument set Author = 'Unbekannt', Mime_Typ = 'Text', Inhalt = 'Eiusmod fugiat ipsum adipisicing officia dolore laboris id labore mollit irure sint et.', Erstelldatum = '14-11-2022';
 commit;
 
-let top1 = create edge top from $g1 to $s1;
-let top2 = create edge top from $g2 to $s2;
-
-let m1 = create edge mitglieder from $p1 to $g1 set Funktion = 'Vorsitzender';
-let m2 = create edge mitglieder from $p2 to $g2 set Funktion = 'Lehrling';
-let m3 = create edge mitglieder from $p3 to $g2 set Funktion = 'Leiter';
-let m4 = create edge mitglieder from $p4 to $g1 set Funktion = 'Lehrling';
+let tago1 = create vertex Tagesordnung set Titel = 'Wahl des neuen AStA', Kurzbeschreibung = 'Wahlen der Verfasste Studierendenschaft', Protokolltext = '';
+let tago2 = create vertex Tagesordnung set Titel = 'StupApfel', Kurzbeschreibung = 'Gratis-Obst für die Studierenden', Protokolltext = '';
+let tago3 = create vertex Tagesordnung set Titel = 'Sonstiges', Kurzbeschreibung = '', Protokolltext = '';
+let tago4 = create vertex Tagesordnung set Titel = 'Ersti Hüttensitzung', Kurzbeschreibung = 'Ankündigung', Protokolltext = '';
 commit;
 
-let h1 = create edge hat from $g1 to $s1;
-let h2 = create edge hat from $g2 to $s2;
+/* Edges */
+let top1 = create edge top from $gremium1 to $sitzung1;
+let top2 = create edge top from $gremium2 to $sitzung2;
+commit;
+
+let mitglied1 = create edge mitglieder from $person1 to $gremium1 set Funktion = 'Vorsitzender';
+let mitglied2 = create edge mitglieder from $person2 to $gremium2 set Funktion = 'Lehrling';
+let mitglied3 = create edge mitglieder from $person3 to $gremium2 set Funktion = 'Leiter';
+let mitglied4 = create edge mitglieder from $person4 to $gremium1 set Funktion = 'Lehrling';
+let mitglied5 = create edge mitglieder from $person3 to $gremium3 set Funktion = 'Vorsitzender';
+let mitglied6 = create edge mitglieder from $person4 to $gremium3 set Funktion = '';
+commit;
+
+let hat1 = create edge hat from $gremium1 to $sitzung1;
+let hat2 = create edge hat from $gremium2 to $sitzung2;
+commit;
+
+let fuehrt_Protokoll_bei1 = create edge fuehrt_Protokoll_bei from $person2 to $sitzung1;
+let fuehrt_Protokoll_bei2 = create edge fuehrt_Protokoll_bei from $person4 to $sitzung2;
+commit;
+
+let top1 = create edge top from $sitzung2 to $tago2;
+let top2 = create edge top from $sitzung2 to $tago3;
+let top3 = create edge top from $sitzung2 to $tago4;
+let top4 = create edge top from $sitzung1 to $tago1;
+commit;
+
+let nimmt_teil1 = create edge nimmt_teil from $person1 to $sitzung1;
+let nimmt_teil2 = create edge nimmt_teil from $person2 to $sitzung1;
+let nimmt_teil3 = create edge nimmt_teil from $person3 to $sitzung2;
+let nimmt_teil4 = create edge nimmt_teil from $person4 to $sitzung2;
+commit;
+
+let erstellt_von1 = create edge erstellt_von from $person2 to $dokument1;
+let erstellt_von2 = create edge erstellt_von from $person2 to $dokument2;
 commit;
 
 end;

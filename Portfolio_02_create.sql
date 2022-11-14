@@ -25,6 +25,7 @@ drop class nimmt_teil;
 drop class fuehrt_Protokoll_bei;
 drop class top;
 drop class hat;
+drop class erstellt_von;
 
 create class Gremien extends V;
 create class Personen extends V;
@@ -45,6 +46,7 @@ create class nimmt_teil extends E; /* Person nimmt_teil an Sitzung */
 create class fuehrt_Protokoll_bei extends E; /* Person führt Protokoll bei Sitzung */
 create class top extends E; /* Sitzung hat ein top*/
 create class hat extends E; /* Gremium hat Sitzung */
+create class erstellt_von extends E; /* Dokument erstellt von Person */
 
 create property Gremien.Name string;
 create property Gremien.Aufgabengebiete embeddedlist string;
