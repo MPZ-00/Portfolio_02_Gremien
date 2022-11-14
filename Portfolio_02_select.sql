@@ -1,12 +1,5 @@
-select * from Gremien where Mitglieder.Funktion 'Vorsitzender';
+select * from Gremien;
 
-select Name, Geschlecht, Adresse
-from Personen;
+select * from Sitzungen where in ('nimmt_teil').Name.Vorname contains 'Hanna' or in ('nimmt_teil').Name.Vorname contains 'Elizabeth';
 
-/* fancy :) */
-select * from Mitglieder;
-select * from nimmt_teil;
-select * from fuehrt_Protokoll_bei;
-select * from top;
-select * from hat;
-select * from erstellt_von;
+Traverse out ('nimmt_teil') from (select * from Personen where Name.Nachname is not null);
