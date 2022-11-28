@@ -1,0 +1,25 @@
+
+Bewertung OrientDB-Loesung - Praetzlich/Gremien - 14 + 34 + 19 = 67 / 100
+
+Create: 14 / 33
+- läuft ohne Fehler durch
+
+- Adresse ist generische Klasse ( also ohne "extends V;" )                          -2
+- Tagesordnung ist eigene Entity und kein zusammengesetztes Attribut bei Sitzung    -3
+- es fehlt die Entity "Antrag"                                                      -5
+- es fehlt die Relation "Person - stellt - Antrag"                                  -3
+- es fehlt die Relation "Antrag - gehoert_zu - TOP"                                 -3
+- es fehlt die Relation "Dokument - fuer - TOP"                                     -3
+
+
+Fill: 34 / 34
+- läuft ohne Fehler durch
+- Daten OK
+
+Abfragen: 8/8  + 4/10  + 7/15 = 19 / 33 
+1: OK
+2: hier sollten die Daten von 3 unterschiedlichen Knoten und 2 unterschiedlichen Kanten in EINER Abfrage erhalten werden 
+    -> hier nur Abfrage über 2 Knoten und 1 Kante
+3: Syntax im Prinzip OK, hier sollte aber das Ablaufen einer Kante mit Traverse gezeigt werden 
+   - dazu würde sich in Ihrer DB z.B. eine neue ( dummy-)Kante "referenz" eignen ( Referenz von einem auf ein anderes Dokument ):
+        traverse out('referenz') from (select * from Dokument where Inhalt = 'Deputatsstunden der Professoren');
